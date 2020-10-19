@@ -1,0 +1,21 @@
+model: 'sbd'
+network: 'ro_34'
+task: 'snake'
+resume: true
+gpus: (0, 1, 2, 3)
+
+train:
+    optim: 'adam'
+    lr: 0.001
+    milestones: (2,10, 30,100,200,300,400,500,800,1000,1500,2500,5000)
+    gamma: 0.5
+    batch_size: 2
+    dataset: 'SbdTrain'
+    num_workers: 4
+    epoch: 10000
+test:
+    dataset: 'SbdMini'
+    batch_size: 1
+
+heads: {'ct_hm': 1, 'wh': 2}
+segm_or_bbox: 'segm'
